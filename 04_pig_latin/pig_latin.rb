@@ -1,5 +1,18 @@
-def translate str
-  # найти способ определять в массиве гласные
+def translate s
+multiword_str = s.split(" ")
+
+  if multiword_str.length > 1 # проверяем кол-во слов
+    multiword_str.each do |e|
+      ayize_word(e)
+    end
+  else
+    ayize_word s
+  end
+
+  s
+end
+
+def ayize_word str
   str_vowels_arr = str.scan(/[aoieu]/)
   str_arr = str.split("")
 
