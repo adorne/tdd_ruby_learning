@@ -1,12 +1,26 @@
 def translate s
-multiword_str = s.split(" ")
+  multiword_str = s.split(" ")
 
-  if multiword_str.length > 1 # проверяем кол-во слов
+  # проверяем кол-во слов
+  if multiword_str.length > 1
+    # puts "#{multiword_str.length} is > 1"
+
+    s = []
     multiword_str.each do |e|
-      ayize_word(e)
+      # puts "Inside each e is #{e}."
+
+      result = ayize_word e
+      s << result
+
+      # puts "In each s is #{s}"
     end
+
+    s = s.join(" ")
+
+    puts "After each s is #{s}"
   else
-    ayize_word s
+    puts "#{multiword_str.length} is = 1"
+    s = ayize_word s
   end
 
   s
@@ -32,5 +46,6 @@ def ayize_word str
     str = str_arr.join + "ay"
   end
 
+  puts "Inside ayize_word str is #{str}."
   str
 end
