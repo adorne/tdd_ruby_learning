@@ -1,27 +1,23 @@
 def translate str
-  str = str.split("")
-
   # найти способ определять в массиве гласные
+  str_vowels_arr = str.scan(/[aoieu]/)
+  str_arr = str.split("")
 
-  if (str.first == ("a" || "e" || "i" || "o" || "u")) || (!str.include?("a" || "e" || "i" || "o" || "u"))
-    str = str.join
+  if (str_arr.first.match(/[aoieu]/)) || (str_vowels_arr.empty?)
     str = str + "ay"
-  elsif str.first != ("a" || "e" || "i" || "o" || "u") # перемещение согласных в конец строки
-    puts "First is #{str.first}"
+  elsif str_arr.first != /[aoieu]/ # перемещение согласных в конец строки
+    # puts "First is #{str_arr.first}"
 
     loop do
-      puts "Before push: #{str}"
-      str.push(str.shift)
-      puts "After push: #{str}"
-      puts ""
-      break if str.first == ("a" || "e" || "i" || "o" || "u")
+      # puts "Before push: #{str_arr}"
+      str_arr.push(str_arr.shift)
+      # puts "After push: #{str_arr}"
+      # puts ""
+      break if str_arr.first.match(/[aoieu]/)
     end
 
-    str = str.join
-    str = str + "ay"
+    str = str_arr.join + "ay"
   end
 
-  puts str
+  str
 end
-
-translate("thr")
