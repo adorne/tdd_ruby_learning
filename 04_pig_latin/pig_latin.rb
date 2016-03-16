@@ -5,7 +5,7 @@ def translate str
 
   if (str_arr.first.match(/[aoieu]/)) || (str_vowels_arr.empty?)
     str = str + "ay"
-  elsif str_arr.first != /[aoieu]/ # перемещение согласных в конец строки
+  elsif !str_arr.first.match(/[aoieu]/) # перемещение согласных в конец строки
     # puts "First is #{str_arr.first}"
 
     loop do
