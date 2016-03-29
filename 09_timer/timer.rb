@@ -6,9 +6,7 @@ class Timer
   end
 
   def time_string
-    h = "00"
-    m = "00"
-    s = "00"
+    h, m, s = "00" # значения по умолчанию; оказывается, и так можно объявлять
 
     if @seconds > 3600
       h = (@seconds / 3600)
