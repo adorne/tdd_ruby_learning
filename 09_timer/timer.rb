@@ -6,22 +6,21 @@ class Timer
   end
 
   def time_string
-    h, m, s = "00" # значения по умолчанию; оказывается, и так можно объявлять
+    h, m = "00" # значения по умолчанию; оказывается, и так можно объявлять
+    s = @seconds
 
-    if @seconds > 3600
-      h = (@seconds / 3600)
-      m = ((@seconds % 3600) / 60)
-      s = (((@seconds % 3600) % 60))
-    elsif @seconds > 60
-      m = ((@seconds % 3600) / 60)
-      s = (((@seconds % 3600) % 60))
-    else
-      s = (@seconds)
+    if s > 3600
+      h = s / 3600
+      m = s % 3600 / 60
+      s = s % 3600 % 60
+    elsif s > 60
+      m = s % 3600 / 60
+      s = s % 3600 % 60
+    elsif s < 60      
+      s
     end
 
     time = "#{pad(h)}:#{pad(m)}:#{pad(s)}"
-
-    return time
   end
 
   def pad arg # добавляем нули
